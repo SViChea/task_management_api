@@ -5,4 +5,5 @@ import site.taskmanagement.taskmanagementapi.model.Role;
 
 public interface RoleRepository extends JpaRepository<Role,Integer> {
     Role findById(int id);
+    Role findByRoleName(String name);
 }

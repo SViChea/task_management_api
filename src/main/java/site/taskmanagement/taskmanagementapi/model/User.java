@@ -1,6 +1,7 @@
 package site.taskmanagement.taskmanagementapi.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -34,6 +35,9 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private List<Role> roles;
+
+    @Column(nullable = false)
+    private Boolean isVerified = false;
 
     @Column(nullable = false)
     private Boolean isEnabled = false;

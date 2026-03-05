@@ -12,6 +12,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -32,14 +33,17 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, HttpSession httpSession) throws Exception {
-        http.csrf(customizer -> customizer.disable());
-        http.formLogin(loginForm -> loginForm.disable());
-        http.httpBasic(basic -> basic.disable());
+        http.csrf(AbstractHttpConfigurer::disable);
+        http.formLogin(AbstractHttpConfigurer::disable);
+        http.httpBasic(AbstractHttpConfigurer::disable);
+
         http.sessionManagement(se -> se.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+
         http.authorizeHttpRequests(re -> re.
-                        requestMatchers(HttpMethod.GET, "/api/v1/test").hasAnyRole("admin")
-                        .requestMatchers(HttpMethod.POST, "/api/v1/login").permitAll()
-                        .anyRequest().authenticated());
+                requestMatchers(HttpMethod.GET, "/api/v1/test").hasAnyRole("admin")
+                .requestMatchers(HttpMethod.POST, "/api/v1/login").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/v1/signup").permitAll()
+                .anyRequest().authenticated());
 
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();

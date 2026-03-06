@@ -41,8 +41,12 @@ public class SecurityConfiguration {
 
         http.authorizeHttpRequests(re -> re.
                 requestMatchers(HttpMethod.GET, "/api/v1/test").hasAnyRole("admin")
-                .requestMatchers(HttpMethod.POST, "/api/v1/login").permitAll()
-                .requestMatchers(HttpMethod.POST, "/api/v1/signup").permitAll()
+                .requestMatchers(HttpMethod.POST,
+                        "/api/v1/login",
+                        "/api/v1/signup",
+                        "/api/v1/verify-otp",
+                        "/api/v1/resend-otp"
+                ).permitAll()
                 .anyRequest().authenticated());
 
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);

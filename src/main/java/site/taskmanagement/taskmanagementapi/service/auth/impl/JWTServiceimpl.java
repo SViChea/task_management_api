@@ -1,4 +1,4 @@
-package site.taskmanagement.taskmanagementapi.service.implementation;
+package site.taskmanagement.taskmanagementapi.service.auth.impl;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
@@ -10,11 +10,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import site.taskmanagement.taskmanagementapi.model.User;
-import site.taskmanagement.taskmanagementapi.service.JWTService;
+import site.taskmanagement.taskmanagementapi.service.auth.JWTService;
 
-import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
-import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;

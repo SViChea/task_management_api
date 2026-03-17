@@ -3,21 +3,18 @@ package site.taskmanagement.taskmanagementapi.controller;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import site.taskmanagement.taskmanagementapi.base.BaseResponse;
 import site.taskmanagement.taskmanagementapi.dto.LoginRequest;
 import site.taskmanagement.taskmanagementapi.dto.OTPRequest;
 import site.taskmanagement.taskmanagementapi.dto.SignUpRequest;
-import site.taskmanagement.taskmanagementapi.dto.UserResponse;
-import site.taskmanagement.taskmanagementapi.service.AuthService;
-import site.taskmanagement.taskmanagementapi.service.otp.OTPService;
+import site.taskmanagement.taskmanagementapi.service.auth.AuthService;
 import site.taskmanagement.taskmanagementapi.service.user.UserService;
 
 import java.time.LocalDateTime;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 public class AuthController {
 

@@ -1,4 +1,4 @@
-package site.taskmanagement.taskmanagementapi.service;
+package site.taskmanagement.taskmanagementapi.service.auth;
 
 import site.taskmanagement.taskmanagementapi.model.User;
 

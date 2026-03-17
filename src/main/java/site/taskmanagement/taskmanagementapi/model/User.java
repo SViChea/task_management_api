@@ -1,7 +1,6 @@
 package site.taskmanagement.taskmanagementapi.model;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,7 +36,7 @@ public class User {
     private List<Role> roles;
 
     @OneToMany(mappedBy = "createdBy")
-    List<site.taskmanagement.taskmanagementapi.model.List> lists;
+    List<Project> projects;
 
     @Column(nullable = false)
     private Boolean isVerified = false;

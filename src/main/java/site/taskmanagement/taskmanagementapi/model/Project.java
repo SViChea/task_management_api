@@ -5,14 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "lists")
-public class List {
+@Table(name = "projects")
+public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +25,12 @@ public class List {
     String description;
 
     @Column(nullable = false)
-    Date createdDate;
+    LocalDate createdDate;
 
     @ManyToOne
     @JoinColumn(nullable = false, name = "created_by")
     User createdBy;
+
+    @Column(nullable = false)
+    Boolean isDeleted = false;
 }

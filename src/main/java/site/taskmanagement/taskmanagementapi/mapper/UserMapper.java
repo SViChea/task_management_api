@@ -7,4 +7,5 @@ import site.taskmanagement.taskmanagementapi.model.User;
 @Mapper(componentModel = "spring")
 public interface UserMapper {
     UserResponse toUserResponse(User user);
+
 }

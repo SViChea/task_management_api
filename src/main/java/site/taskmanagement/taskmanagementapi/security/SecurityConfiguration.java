@@ -44,6 +44,8 @@ public class SecurityConfiguration {
 
         http.cors(cors -> cors.configurationSource(corsConfigurationSource()));
 
+        http.authenticationProvider(daoAuthenticationProvider());
+
         http.sessionManagement(se -> se.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         http.authorizeHttpRequests(re -> re
@@ -56,19 +58,22 @@ public class SecurityConfiguration {
                 ).permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/test").hasAnyRole("admin")
                 .requestMatchers(HttpMethod.POST,
-                        "/api/v1/login",
-                        "/api/v1/signup",
-                        "/api/v1/verify-otp",
-                        "/api/v1/resend-otp"
+                        "/api/v1/auth/login",
+                        "/api/v1/auth/signup",
+                        "/api/v1/auth/verify-otp",
+                        "/api/v1/auth/resend-otp"
                 ).permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/v1/projects").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/v1/projects").hasAnyRole("admin", "user")
+                .requestMatchers(HttpMethod.PATCH, "/api/v1/projects").hasAnyRole("admin", "user")
+                .requestMatchers(HttpMethod.DELETE, "/api/v1/projects").hasAnyRole("admin", "user")
                 .anyRequest().authenticated());
 
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 
-    @Bean
-    public AuthenticationProvider authenticationProvider() {
+    private DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider(userDetailsService);
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
 

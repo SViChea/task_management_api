@@ -1,7 +1,6 @@
 package site.taskmanagement.taskmanagementapi.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import site.taskmanagement.taskmanagementapi.dto.Project.ProjectResponse;
 import site.taskmanagement.taskmanagementapi.model.Project;
 import site.taskmanagement.taskmanagementapi.model.User;
 

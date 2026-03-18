@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import site.taskmanagement.taskmanagementapi.base.BaseResponse;
-import site.taskmanagement.taskmanagementapi.dto.Project.ProjectRequest;
+import site.taskmanagement.taskmanagementapi.dto.project.ProjectRequest;
 import site.taskmanagement.taskmanagementapi.service.project.ProjectService;
 
 import java.time.LocalDateTime;

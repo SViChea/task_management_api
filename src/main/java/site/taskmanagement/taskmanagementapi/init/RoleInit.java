@@ -8,7 +8,7 @@ import site.taskmanagement.taskmanagementapi.repository.RoleRepository;
 
 @Component
 @RequiredArgsConstructor
-public class RoleInitialize {
+public class RoleInit {
 
     private final RoleRepository roleRepository;
 

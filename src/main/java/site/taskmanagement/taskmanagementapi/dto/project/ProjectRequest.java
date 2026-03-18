@@ -1,4 +1,4 @@
-package site.taskmanagement.taskmanagementapi.dto.Project;
+package site.taskmanagement.taskmanagementapi.dto.project;
 
 public record ProjectRequest(
         Long userId,

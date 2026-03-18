@@ -5,15 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-import java.util.List;
+import java.time.LocalDateTime;
 
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-@Table(name = "projects")
-public class Project {
+@Table(name = "tasks")
+public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,18 +21,20 @@ public class Project {
     @Column(nullable = false)
     String title;
 
-    @Column(nullable = false)
     String description;
 
     @Column(nullable = false)
-    LocalDate createdDate;
-
-    @ManyToOne
-    User createdBy;
+    LocalDateTime dueDate;
 
     @Column(nullable = false)
-    Boolean isDeleted = false;
+    LocalDateTime createdDate;
 
-    @OneToMany(mappedBy = "project")
-    List<Task> tasks;
+    @OneToOne
+    Progress progress;
+
+    @OneToOne
+    Priority priority;
+
+    @ManyToOne
+    Project project;
 }

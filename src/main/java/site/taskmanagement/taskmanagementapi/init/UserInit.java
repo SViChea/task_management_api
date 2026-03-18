@@ -2,7 +2,6 @@ package site.taskmanagement.taskmanagementapi.init;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import site.taskmanagement.taskmanagementapi.model.Role;
@@ -15,7 +14,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class UserInitialize {
+public class UserInit {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;

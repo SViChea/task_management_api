@@ -1,4 +1,4 @@
-package site.taskmanagement.taskmanagementapi.dto.Project;
+package site.taskmanagement.taskmanagementapi.dto.project;
 
 import java.util.Date;
 

@@ -1,7 +1,7 @@
 package site.taskmanagement.taskmanagementapi.service.project;
 
-import site.taskmanagement.taskmanagementapi.dto.Project.ProjectRequest;
-import site.taskmanagement.taskmanagementapi.dto.Project.ProjectResponse;
+import site.taskmanagement.taskmanagementapi.dto.project.ProjectRequest;
+import site.taskmanagement.taskmanagementapi.dto.project.ProjectResponse;
 
 import java.util.List;
 

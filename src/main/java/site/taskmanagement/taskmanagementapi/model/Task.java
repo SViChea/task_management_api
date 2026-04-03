@@ -29,10 +29,10 @@ public class Task {
     @Column(nullable = false)
     LocalDateTime createdDate;
 
-    @OneToOne
+    @ManyToOne
     Progress progress;
 
-    @OneToOne
+    @ManyToOne
     Priority priority;
 
     @ManyToOne

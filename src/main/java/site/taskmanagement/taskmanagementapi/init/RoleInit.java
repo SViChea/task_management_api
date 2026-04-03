@@ -14,14 +14,17 @@ public class RoleInit {
 
     @PostConstruct
     public void init(){
-        Role admin = new Role();
-        admin.setId(1);
-        admin.setRoleName("admin");
-        roleRepository.save(admin);
+        if(roleRepository.findAll().isEmpty()){
+            Role admin = new Role();
+            admin.setId(1);
+            admin.setRoleName("admin");
+            roleRepository.save(admin);
 
-        Role user = new Role();
-        user.setId(2);
-        user.setRoleName("user");
-        roleRepository.save(user);
+            Role user = new Role();
+            user.setId(2);
+            user.setRoleName("user");
+            roleRepository.save(user);
+        }
+
     }
 }

@@ -74,7 +74,7 @@ public class ProjectServiceImpl implements ProjectService {
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Project not found")
         );
 
-        if (!project.getCreatedBy().equals(user)) {
+        if (!project.getCreatedBy().getId().equals(user.getId())) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "User not allowed to update project");
         }
 
@@ -96,7 +96,7 @@ public class ProjectServiceImpl implements ProjectService {
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Project not found")
         );
 
-        if (!project.getCreatedBy().equals(user)) {
+        if (!project.getCreatedBy().getId().equals(user.getId())) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "User not allowed to delete project");
         }
 

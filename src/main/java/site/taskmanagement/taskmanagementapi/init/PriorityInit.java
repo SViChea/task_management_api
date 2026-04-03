@@ -14,21 +14,22 @@ public class PriorityInit {
 
     @PostConstruct
     public void init() {
-        Priority urgent = new Priority();
-        urgent.setTitle("Urgent");
-        priorityRepository.save(urgent);
+        if(priorityRepository.findAll().isEmpty()) {
+            Priority urgent = new Priority();
+            urgent.setTitle("Urgent");
+            priorityRepository.save(urgent);
 
-        Priority important = new Priority();
-        important.setTitle("Important");
-        priorityRepository.save(important);
+            Priority important = new Priority();
+            important.setTitle("Important");
+            priorityRepository.save(important);
 
-        Priority medium = new Priority();
-        medium.setTitle("Medium");
-        priorityRepository.save(medium);
+            Priority medium = new Priority();
+            medium.setTitle("Medium");
+            priorityRepository.save(medium);
 
-        Priority low = new Priority();
-        low.setTitle("Low");
-        priorityRepository.save(low);
-
+            Priority low = new Priority();
+            low.setTitle("Low");
+            priorityRepository.save(low);
+        }
     }
 }

@@ -14,16 +14,18 @@ public class ProgressInit {
 
     @PostConstruct
     public void init() {
-        Progress notStarted = new Progress();
-        notStarted.setTitle("Not Started");
-        progressRepository.save(notStarted);
+        if(progressRepository.findAll().isEmpty()) {
+            Progress notStarted = new Progress();
+            notStarted.setTitle("Not Started");
+            progressRepository.save(notStarted);
 
-        Progress inProgress = new Progress();
-        inProgress.setTitle("In Progress");
-        progressRepository.save(inProgress);
+            Progress inProgress = new Progress();
+            inProgress.setTitle("In Progress");
+            progressRepository.save(inProgress);
 
-        Progress completed = new Progress();
-        completed.setTitle("Completed");
-        progressRepository.save(completed);
+            Progress completed = new Progress();
+            completed.setTitle("Completed");
+            progressRepository.save(completed);
+        }
     }
 }

@@ -56,17 +56,21 @@ public class SecurityConfiguration {
                         "/api-docs.yaml",
                         "/v3/api-docs/**"       // ← springdoc default path
                 ).permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/v1/test").hasAnyRole("admin")
                 .requestMatchers(HttpMethod.POST,
                         "/api/v1/auth/login",
                         "/api/v1/auth/signup",
                         "/api/v1/auth/verify-otp",
                         "/api/v1/auth/resend-otp"
                 ).permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/v1/projects").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/v1/projects").hasAnyRole("admin", "user")
                 .requestMatchers(HttpMethod.POST, "/api/v1/projects").hasAnyRole("admin", "user")
                 .requestMatchers(HttpMethod.PATCH, "/api/v1/projects").hasAnyRole("admin", "user")
                 .requestMatchers(HttpMethod.DELETE, "/api/v1/projects").hasAnyRole("admin", "user")
+                .requestMatchers(HttpMethod.GET, "/api/v1/tasks").hasAnyRole("admin", "user")
+                .requestMatchers(HttpMethod.POST, "/api/v1/tasks").hasAnyRole("admin", "user")
+                .requestMatchers(HttpMethod.PATCH, "/api/v1/tasks").hasAnyRole("admin", "user")
+                .requestMatchers(HttpMethod.DELETE, "/api/v1/tasks").hasAnyRole("admin", "user")
+                .requestMatchers(HttpMethod.GET, "/api/v1/tasks/projects").hasAnyRole("admin", "user")
                 .anyRequest().authenticated());
 
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);

@@ -66,9 +66,4 @@ public class AuthController {
                 .data("OTP sent successfully")
                 .build();
     }
-
-    @GetMapping("/test")
-    public String test() {
-        return "Hello World";
-    }
 }

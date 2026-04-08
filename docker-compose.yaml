@@ -1,0 +1,19 @@
+services:
+  task-management-api:
+    build: .
+    image: taskmanagement:v1
+    container_name: task-management-api
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:17.6
+    container_name: task_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: qwer
+      POSTGRES_DB:
+    ports:
+      - "5432:5432"

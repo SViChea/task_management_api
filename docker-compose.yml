@@ -1,7 +1,7 @@
 services:
   task-management-api:
     build: .
-    image: svichea/taskmanagement:v1
+    image: taskmanagement:v1
     container_name: task-management-api
     ports:
       - "8081:8081"
@@ -11,9 +11,7 @@ services:
   postgres:
     image: postgres:17.6
     container_name: task_db
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: qwer
-      POSTGRES_DB: task_db
+    env_file:
+      - path: src/main/resources/application-prod.properties
     ports:
       - "5432:5432"
